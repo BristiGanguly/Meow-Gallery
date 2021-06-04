@@ -37,8 +37,8 @@ app.controller('HomePageController', function() {
 	}];
 	
 	homepage.picOfTheDay = {
-			img: homepage.galleryCards[Math.floor(Math.random() * 5)].img,
-			desc: homepage.galleryCards[Math.floor(Math.random() * 5)].desc,
+			img: homepage.galleryCards[Math.floor(Math.random() * 6)].img,
+			desc: homepage.galleryCards[Math.floor(Math.random() * 6)].desc,
 			updatedAgo: "3 mins"
 		};
 });
