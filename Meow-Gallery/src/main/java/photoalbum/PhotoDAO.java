@@ -4,34 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Repository;
 
-
-
-
-
 @Repository
 public class PhotoDAO {
 
-	
-	
 	public List<AlbumDTO> FetchAlbum() {
 
 		// DB CONNECTION BLOCK STARTS
 
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/student_register");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/photo_album");
 		dataSource.setUsername("root");
 		// dataSource.setPassword("password");
 
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		
+
 		// BLOCK ENDS
-		
-		
+
 		String sql = "SELECT Image_path,Image_name,Image_tags,Image_description from cat_album";
 		// String sql = "SELECT student_name from registration_form";
 		// String result = "";
@@ -52,9 +47,10 @@ public class PhotoDAO {
 					dto.setName(row.get("Image_name").toString());
 					dto.setTags(row.get("Image_tags").toString());
 					dto.setDesc(row.get("Image_description").toString());
-					
 
-					rows.add(dto);  //list of DTO object going to js
+					dto.setFullPath(dto.getPath() + "/" + dto.getName());
+
+					rows.add(dto); // list of DTO object going to js
 
 				}
 
