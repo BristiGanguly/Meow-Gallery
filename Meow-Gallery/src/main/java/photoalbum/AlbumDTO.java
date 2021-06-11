@@ -6,6 +6,7 @@ public class AlbumDTO {
 	private String name;
 	private String tags;
 	private String desc;
+	private String fullPath;
 
 	public String getPath() {
 		return path;
@@ -17,6 +18,14 @@ public class AlbumDTO {
 
 	public String getName() {
 		return name;
+	}
+
+	public String getFullPath() {
+		return fullPath;
+	}
+
+	public void setFullPath(String fullPath) {
+		this.fullPath = fullPath;
 	}
 
 	public void setName(String name) {
